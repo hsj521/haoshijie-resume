@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>郝仕杰 · 个人简历</title>
+  <meta name="description" content="郝仕杰 — AutoSAR SWC / 智能座舱仪表嵌入式开发，大连，在职。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0a0e17;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8ecf4;
+      --muted: #8b95a8;
+      --accent: #7c9cff;
+      --accent-warm: #ff9b7a;
+      --glow: rgba(124, 156, 255, 0.35);
+      --radius: 18px;
+      --font: "Noto Sans SC", "DM Sans", system-ui, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg-deep);
+      overflow-x: hidden;
+    }
+
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(124, 156, 255, 0.22), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(255, 155, 122, 0.12), transparent 50%),
+        radial-gradient(ellipse 50% 35% at 50% 100%, rgba(124, 156, 255, 0.08), transparent 45%);
+      z-index: 0;
+    }
+
+    .grid-noise {
+      position: fixed;
+      inset: 0;
+      opacity: 0.035;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.8s ease-out both;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr 320px;
+        gap: 3rem;
+      }
+    }
+
+    .hero-copy {
+      animation: fadeUp 0.85s ease-out 0.08s both;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.15rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 span {
+      background: linear-gradient(120deg, var(--text) 0%, var(--accent) 45%, var(--accent-warm) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 36ch;
+      margin: 0 0 1.75rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.35rem;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #5b7cff 100%);
+      color: #0a0e17;
+      box-shadow: 0 8px 32px -8px var(--glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px -6px var(--glow);
+    }
+
+    .btn-ghost {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .hero-card {
+      position: relative;
+      animation: fadeUp 0.9s ease-out 0.15s both;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .hero-card-inner::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 70%;
+      height: 100%;
+      background: radial-gradient(circle, var(--glow), transparent 65%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0a0e17;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 12px 40px -10px var(--glow);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .hero-card .role {
+      margin: 0 0 1.25rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 1.1rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat small {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      padding: 1.35rem 1.25rem;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, transform 0.25s;
+      animation: fadeUp 0.7s ease-out both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+
+    .card:hover {
+      border-color: rgba(124, 156, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.85rem;
+      background: rgba(124, 156, 255, 0.12);
+    }
+
+    .card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .timeline {
+      border-left: 1px solid var(--border);
+      margin-left: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.75rem;
+      animation: fadeUp 0.65s ease-out both;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.5rem - 5px);
+      top: 0.35rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(124, 156, 255, 0.2);
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .timeline-item .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .detail-list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.15rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .detail-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .detail-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-head {
+      margin-bottom: 0.75rem;
+    }
+
+    .job-head h4 {
+      margin: 0 0 0.2rem;
+      font-size: 1.05rem;
+    }
+
+    .nested-projects {
+      margin: 1rem 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nested-projects > li {
+      margin-bottom: 1.35rem;
+      padding: 1rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+    }
+
+    .nested-projects > li:last-child {
+      margin-bottom: 0;
+    }
+
+    .nested-projects h5 {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .nested-projects .proj-desc {
+      margin: 0 0 0.5rem;
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(124, 156, 255, 0.1);
+      border: 1px solid rgba(124, 156, 255, 0.22);
+      color: var(--text);
+    }
+
+    .edu-card {
+      padding: 1.25rem 1.35rem;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      animation: fadeUp 0.7s ease-out both;
+    }
+
+    .edu-card h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .edu-card .meta {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(124, 156, 255, 0.1), rgba(255, 155, 122, 0.06));
+      border: 1px solid rgba(124, 156, 255, 0.18);
+      animation: fadeUp 0.75s ease-out both;
+    }
+
+    .contact h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.35rem;
+    }
+
+    .contact p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      justify-content: center;
+    }
+
+    .links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .links a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="grid-noise" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="logo">郝仕杰 · 简历</div>
+      <nav aria-label="主导航">
+        <a href="#about">概况</a>
+        <a href="#skills">技能</a>
+        <a href="#experience">经历</a>
+        <a href="#education">教育</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          在职 · 大连 · AutoSAR SWC 开发
+        </div>
+        <h1>你好，我是 <span>郝仕杰</span></h1>
+        <p class="lead">
+          智能座舱仪表方向嵌入式工程师，专注 AUTOSAR SWC 整栈开发：信号链路、诊断模块、算法标定与通信栈搭建；熟悉高通 8155、瑞萨 RH850 等平台的量产交付与 CANoe / Trace 联调分析。
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">联系我</a>
+          <a class="btn btn-ghost" href="#experience">项目经历</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="avatar" aria-hidden="true">郝</div>
+          <h2>AutoSAR SWC 开发</h2>
+          <p class="role">上海尊字智能科技 · 智能座舱仪表</p>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.65; color: var(--muted);">
+            具备汽车仪表 AutoSAR SWC 全栈能力，覆盖燃油 / 混动 / 纯电及一机多车型场景；能独立完成从架构设计、模块实现到实车路试与问题闭环。
+          </p>
+          <div class="stats" aria-label="简要数据">
+            <div class="stat">
+              <b>5+</b>
+              <small>年经验</small>
+            </div>
+            <div class="stat">
+              <b>6</b>
+              <small>代表项目</small>
+            </div>
+            <div class="stat">
+              <b>本科</b>
+              <small>软件工程</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <p class="section-title">Profile</p>
+      <p style="margin: 0; max-width: 62ch; font-size: 1rem; line-height: 1.8; color: var(--muted); animation: fadeUp 0.7s ease-out both;">
+        生于 1999 年，籍贯河北邢台，现居辽宁大连。<strong style="color: var(--text); font-weight: 600;">本科</strong>毕业于大连理工大学城市学院软件工程专业。目前在汽车行业从事智能座舱仪表软件开发，工作风格稳健，熟悉从需求澄清、模块开发到整车联调与文档维护的全流程协作。
+      </p>
+    </section>
+
+    <section id="skills">
+      <p class="section-title">Skills</p>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">◆</div>
+          <h3>嵌入式与 AUTOSAR</h3>
+          <p>C 语言嵌入式开发；AUTOSAR SWC 架构与实现；信号链路、RTE、EEPROM / BackRAM 使用与维护。</p>
+          <div class="skill-tags">
+            <span class="tag">C</span>
+            <span class="tag">AUTOSAR</span>
+            <span class="tag">SWC</span>
+            <span class="tag">RTE</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">◇</div>
+          <h3>工具链与总线</h3>
+          <p>Keil、CS+、S32DS；CANoe / ZLG 等 CAN 工具（信号分析、诊断、CAPL、Panel 等）；Git / SVN / VS 系列协作开发。</p>
+          <div class="skill-tags">
+            <span class="tag">CANoe</span>
+            <span class="tag">CAPL</span>
+            <span class="tag">Keil</span>
+            <span class="tag">S32DS</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">○</div>
+          <h3>硬件与测试</h3>
+          <p>示波器、万用表、直流电源；Trace Log 与实车数据分析，具备路试问题定位与报告输出经验。</p>
+          <div class="skill-tags">
+            <span class="tag">联调</span>
+            <span class="tag">路试</span>
+            <span class="tag">诊断</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <p class="section-title">Experience</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="job-head">
+            <h4>上海尊字智能科技有限公司</h4>
+            <div class="meta">2025.02 — 至今 · AutoSAR-SWC 开发</div>
+          </div>
+          <ul class="nested-projects">
+            <li>
+              <h5>PKK1 · 智能座舱仪表 SWC</h5>
+              <p class="proj-desc">基于高通 8155 芯片；遵循 AUTOSAR 规范，完成信号链路设计、算法实现及通信栈搭建。</p>
+              <ul class="detail-list">
+                <li>TT / Warning / Chime 架构设计及竞合逻辑架构搭建</li>
+                <li>基于诊断问卷调查表设计并编写 SWC 诊断模块</li>
+                <li>算法编写及标定：油耗 / 电耗 / 能耗 / 燃油表 / 续航</li>
+                <li>EEPROM / BackRAM / RTE 使用及维护</li>
+                <li>CANoe / Trace Log 分析整车数据，编写实车路试报告</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="job-head">
+            <h4>上海友衷科技有限公司</h4>
+            <div class="meta">2021.03 — 2025.01 · AutoSAR-SWC 开发</div>
+          </div>
+          <ul class="nested-projects">
+            <li>
+              <h5>M2304 · 麒麟 9610 + RH850 仪表</h5>
+              <p class="proj-desc">基于麒麟 9610（SOC）与瑞萨 RH850（MCU）的智能座舱仪表软件开发。</p>
+              <ul class="detail-list">
+                <li>仪表基础功能：指示灯、弹窗、Chime 音、燃油续航及算法标定</li>
+                <li>MCU 底软：类 AUTOSAR 架构下的 EEPROM、RTE 等</li>
+                <li>项目接口与各模块技术沟通协调</li>
+              </ul>
+            </li>
+            <li>
+              <h5>M2204 · 8155 QNX 虚拟化中间件</h5>
+              <p class="proj-desc">基于高通 8155 QNX 虚拟化的智能座舱中间件与仪表软件；QCar service、QCluster 开发。</p>
+              <ul class="detail-list">
+                <li>仪表基础功能：指示灯、弹窗、Chime 音</li>
+                <li>复杂功能测试用 CAPL 脚本工具编写</li>
+                <li>QCluster / QCar service 侧 CAN 信号解析</li>
+              </ul>
+            </li>
+            <li>
+              <h5>M2004（Gardenia）· 7 吋组合仪表（量产）</h5>
+              <p class="proj-desc">燃油车量产组合仪表：7 吋液晶屏与双指针表盘（步进电机驱动）。</p>
+              <ul class="detail-list">
+                <li>用户需求变更的实现与维护</li>
+                <li>需求文档维护与变更点识别</li>
+                <li>步进电机及水温、燃油表相关变更对应</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <p class="section-title">Education</p>
+      <div class="edu-card">
+        <h4>大连理工大学城市学院</h4>
+        <p class="meta">本科 · 软件工程专业</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact">
+        <h2 id="contact-heading">联系方式</h2>
+        <p>欢迎邮件或电话联系（招聘 / 技术交流均可）。</p>
+        <div class="links">
+          <a href="mailto:1666960575@qq.com">1666960575@qq.com</a>
+          <a href="tel:18141131592">181&nbsp;4113&nbsp;1592</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> 郝仕杰 · 个人简历页面 · 浏览器打开即可预览
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
